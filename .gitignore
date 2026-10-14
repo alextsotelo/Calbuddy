@@ -1,0 +1,5 @@
+.env
+.venv/
+.venv-web/
+__pycache__/
+*.py[cod]
