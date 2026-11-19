@@ -13,7 +13,7 @@ I built this personal project to practice Python, relational database design, SQ
 - View today's log with nutrition totals for each entry.
 - Delete individual log entries.
 - Review average daily intake across preset or custom date ranges.
-- Generate a calorie trend chart from logged data.
+- Generate a calorie trend chart from logged data (work in progress).
 
 ## Technologies
 
@@ -125,22 +125,9 @@ Choose an option from the numbered menu. For a first walkthrough:
 
 Charts are saved to `calorie_trend.png` in the current working directory. Open the file to view the result; generating another chart overwrites it.
 
-## Example chart
+## Data visualizations
+
+The data visualization features are not fully finished and are still a work in progress. The chart below shows the current calorie trend visualization.
 
 ![CalBuddy calorie trend chart](calorie_trend.png)
 
-## A problem I worked through
-
-Deleting a meal that was already referenced by a log entry could break the relationship between the tables. I used a soft-delete approach: removing a meal sets `is_active` to false instead of deleting its database row. The meal disappears from the active list, while existing log entries can still reference it.
-
-Meal logging and reporting use SQL joins and serving quantities to calculate nutrition totals. Period summaries average those totals over days with logged entries, rather than every calendar day in the selected range.
-
-## Current scope
-
-CalBuddy currently runs in the terminal. The unfinished Flask interface is excluded from this version.
-
-- Historical log totals use the meal's current nutrition values. Editing a meal also changes the totals shown for its previous logs.
-- Adding a meal with an existing name updates its nutrition values and reactivates it.
-- Charts include days with logged entries; missing days are not filled with zeros.
-- Input validation is still being improved, particularly for dates and negative quantities.
-- This is a personal learning project with no automated test suite at present.
